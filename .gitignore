@@ -1,0 +1,15 @@
+# Prerequisiti C
+*.d
+*.o
+*.obj
+*.elf
+
+*.out
+*.exe
+
+build/
+bin/
+
+.DS_Store
+.swp
+*~
