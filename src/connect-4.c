@@ -106,4 +106,30 @@ int checkWin(int board[ROWS][COLS], int r, int c, int player) {
     return 0;
 }
 
+//Save game board in filename with currentTurn to restart the match in the same condition
+void saveGame(int board[ROWS][COLS], int currentTurn, int drawChecker,  const char *filename){
+
+    FILE *fp = fopen(filename, "w");
+    
+    //Check open
+    if (fp == NULL) {
+        printf("Error opening files.\n");
+        return;
+    }
+
+    fprintf(fp, "%d\n", currentTurn);
+
+    for(int i = 0; i < ROWS; i++){
+        for(int j = 0; j < COLS; j++){
+            fprintf(fp, "%d ", board[i][j]);
+        }
+        fprintf(fp, "\n");
+ }
+
+    // Close files to release locks
+    fclose(fp);
+
+    printf("Game saved successfully in: %s\n", filename);
+}
+
 

@@ -24,9 +24,6 @@ void printBoard(int board[ROWS][COLS]);
 // Attempts to drop a token into the specified column.
 int insertToken(int board[ROWS][COLS], int column, int player);
 
-// Checks if the board is completely full (Draw condition)
-bool checkDraw(int board[ROWS][COLS]);
-
 // Checks for a win condition specifically around the last placed token.
 bool checkWin(int board[ROWS][COLS], int lastRow, int lastCol, int player);
 
