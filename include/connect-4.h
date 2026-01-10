@@ -28,10 +28,11 @@ int insertToken(int board[ROWS][COLS], int column, int player);
 bool checkWin(int board[ROWS][COLS], int lastRow, int lastCol, int player);
 
 // Saves the current board state and whose turn it is
-void saveGame(int board[ROWS][COLS], int currentTurn, const char *filename);
+void saveGame(int board[ROWS][COLS], int currentTurn, int drawChecker,  const char *filename);
 
-// Loads the game. Returns the current turn (1 or 2) to resume play.
+// Loads the game. 
+// Returns 1 if loading success.
 // Returns 0 if loading failed.
-int loadGame(int board[ROWS][COLS], const char *filename);
+int loadGame(int board[ROWS][COLS], int *currentTurn, int *drawChecker,  const char *filename);
 
 #endif

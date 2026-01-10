@@ -132,4 +132,34 @@ void saveGame(int board[ROWS][COLS], int currentTurn, int drawChecker,  const ch
     printf("Game saved successfully in: %s\n", filename);
 }
 
+// We use pointers to send these values back to the main function
+int loadGame(int board[ROWS][COLS], int *currentTurn, int *movesCount, const char *filename) {
+    
+    FILE *fp = fopen(filename, "r");
 
+    // Check if file exists
+    if (fp == NULL) {
+        printf("Error: Save file not found.\n");
+        return 0; // Return 0 to indicate failure
+    }
+
+    // We use & because fscanf needs the memory address
+    if (fscanf(fp, "%d %d", currentTurn, movesCount) != 2) {
+        fclose(fp);
+        return 0;
+    }
+
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            // Read each cell directly into the board
+            if (fscanf(fp, "%d", &board[i][j]) != 1) {
+                fclose(fp);
+                return 0;
+            }
+        }
+    }
+
+    fclose(fp);
+    printf("Game loaded successfully!\n");
+    return 1;
+}
