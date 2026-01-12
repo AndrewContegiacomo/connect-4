@@ -1,4 +1,4 @@
-#include "connect-4.h"
+#include "../include/connect-4.h"
 
 //Initialize board with all EMPTY spaces
 void initBoard(int board[ROWS][COLS]){
@@ -107,7 +107,7 @@ int checkWin(int board[ROWS][COLS], int r, int c, int player) {
 }
 
 //Save game board in filename with currentTurn to restart the match in the same condition
-void saveGame(int board[ROWS][COLS], int currentTurn, int drawChecker,  const char *filename){
+void saveGame(int board[ROWS][COLS], int currentTurn, int movesCount,  const char *filename){
 
     FILE *fp = fopen(filename, "w");
     
@@ -117,7 +117,8 @@ void saveGame(int board[ROWS][COLS], int currentTurn, int drawChecker,  const ch
         return;
     }
 
-    fprintf(fp, "%d\n", currentTurn);
+    // Scrive DUE numeri sulla prima riga
+    fprintf(fp, "%d %d\n", currentTurn, movesCount);
 
     for(int i = 0; i < ROWS; i++){
         for(int j = 0; j < COLS; j++){

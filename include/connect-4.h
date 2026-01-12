@@ -25,7 +25,7 @@ void printBoard(int board[ROWS][COLS]);
 int insertToken(int board[ROWS][COLS], int column, int player);
 
 // Checks for a win condition specifically around the last placed token.
-bool checkWin(int board[ROWS][COLS], int lastRow, int lastCol, int player);
+int checkWin(int board[ROWS][COLS], int lastRow, int lastCol, int player);
 
 // Saves the current board state and whose turn it is
 void saveGame(int board[ROWS][COLS], int currentTurn, int drawChecker,  const char *filename);
